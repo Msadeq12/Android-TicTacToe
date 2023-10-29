@@ -5,5 +5,12 @@
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
     </style>
 
-    <style name="Theme.MSKAssignment2" parent="Base.Theme.MSKAssignment2" />
+    <style name="Theme.MSKAssignment2" parent="Base.Theme.MSKAssignment2">
+
+    </style>
+
+    <style name="SplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowSplashScreenAnimatedIcon">@drawable/tic_tac_toe_svgrepo_com</item>
+    </style>
+
 </resources>

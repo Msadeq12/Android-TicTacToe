@@ -9,6 +9,8 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import java.util.ArrayList;
+
 public class GameActivity extends AppCompatActivity {
 
     private Drawable xPlayer;
@@ -17,45 +19,66 @@ public class GameActivity extends AppCompatActivity {
     private static int total_moves = 9;
 
     public static int moveCounter = 0;
-    private ImageView[] boxes = new ImageView[9];
+    public Drawable[] boxes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        xPlayer = ResourcesCompat.getDrawable(getResources(), R.drawable.token_x, null);
-        oPlayer = ResourcesCompat.getDrawable(getResources(), R.drawable.token_o, null);
+        xPlayer = ResourcesCompat.getDrawable(getResources(), R.drawable.token_black, null);
+        oPlayer = ResourcesCompat.getDrawable(getResources(), R.drawable.token_white, null);
+
+        boxes = new Drawable[9];
 
     }
 
     public Drawable ShowPlayer(int count, ImageView image){
 
         if(count % 2 == 0){
-            image.animate().translationYBy(50f);
+            image.setTranslationY(-1000f);
+            image.animate().translationYBy(1000f);
             return xPlayer;
         }
 
         else{
-            image.animate().translationYBy(50f);
+            image.setTranslationY(-1000f);
+            image.animate().translationYBy(1000f);
             return oPlayer;
         }
     }
 
     /*
-        Instantiates an ImageView at every click
+        Conditions for winning, losing, and a tie
+     */
+    public void WinLoseConditions(){
+        Drawable combo1 = null;
+        Drawable combo2 = null;
+        Drawable combo3 = null;
+
+
+    }
+
+    public void ResetGame(){
+
+    }
+
+    /*
+        Assigns a player token to ImageView at every click
      */
     public void playerTap(View view){
-        moveCounter++;
         ImageView imgPlayer = (ImageView) view;
-        int tappedBox = Integer.parseInt(imgPlayer.getTag().toString());
 
-        imgPlayer.setTranslationY(-100f);
+        if(imgPlayer.getDrawable() == null){
+            moveCounter++;
+            int tappedBox = Integer.parseInt(imgPlayer.getTag().toString());
 
-        imgPlayer.setImageDrawable(ShowPlayer(moveCounter, imgPlayer));
+            boxes[tappedBox] = ShowPlayer(moveCounter, imgPlayer);
+            imgPlayer.setImageDrawable(ShowPlayer(moveCounter, imgPlayer));
 
 
+        }
 
-        Log.i("tappedBox", imgPlayer.getTag().toString());
+
     }
 }

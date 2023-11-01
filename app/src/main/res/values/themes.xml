@@ -10,7 +10,7 @@
     </style>
 
     <style name="SplashScreenTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
-        <item name="android:windowSplashScreenAnimatedIcon">@drawable/tic_tac_toe_svgrepo_com</item>
+        <item name="android:windowBackground">@drawable/splash_screen</item>
     </style>
 
 </resources>

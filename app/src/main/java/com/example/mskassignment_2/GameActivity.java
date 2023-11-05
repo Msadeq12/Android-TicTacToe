@@ -15,37 +15,77 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+
+
 
 public class GameActivity extends AppCompatActivity {
 
-    Drawable xPlayer;
-    Drawable oPlayer;
+    Drawable player1;
+    Drawable player2;
 
-    private static int total_moves = 9;
+    String player1Name;
+    String player2Name;
 
-    public static int moveCounter = 0;
+    ImageView image1;
+
+    ImageView image2;
+
+    ImageView image3;
+
+    ImageView image4;
+
+    ImageView image5;
+
+    ImageView image6;
+
+    ImageView image7;
+
+    ImageView image8;
+
+    ImageView image9;
+
+
+    int total_moves = 9;
+
+    int moveCounter = 0;
     public Drawable[] boxes;
 
     TextView gameMessage;
     Button playAgain;
     Button goHome;
 
-    AlertDialog.Builder resultBuilder;
-    AlertDialog resultGame;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
 
-        xPlayer = ResourcesCompat.getDrawable(getResources(), R.drawable.token_black, null);
-        oPlayer = ResourcesCompat.getDrawable(getResources(), R.drawable.token_white, null);
+        player1 = ResourcesCompat.getDrawable(getResources(), R.drawable.token_black, null);
+        player2 = ResourcesCompat.getDrawable(getResources(), R.drawable.token_white, null);
+
+        player1Name = getIntent().getStringExtra("player1_name");
+        player2Name = getIntent().getStringExtra("player2_name");
 
         boxes = new Drawable[9];
-        gameMessage = findViewById(R.id.txtGameMessage);
-        playAgain = findViewById(R.id.btnPlayAgain);
-        goHome = findViewById(R.id.btnHome);
 
+        gameMessage = findViewById(R.id.txtGameMessage);
+
+        playAgain = findViewById(R.id.btnPlayAgain);
+        playAgain.setVisibility(View.INVISIBLE);
+
+        goHome = findViewById(R.id.btnHome);
+        goHome.setVisibility(View.INVISIBLE);
+
+        image1 = findViewById(R.id.imgBox0);
+        image2 = findViewById(R.id.imgBox1);
+        image3 = findViewById(R.id.imgBox2);
+        image4 = findViewById(R.id.imgBox3);
+        image5 = findViewById(R.id.imgBox4);
+        image6 = findViewById(R.id.imgBox5);
+        image7 = findViewById(R.id.imgBox6);
+        image8 = findViewById(R.id.imgBox7);
+        image9 = findViewById(R.id.imgBox8);
 
 
 
@@ -58,13 +98,13 @@ public class GameActivity extends AppCompatActivity {
         if(count % 2 == 0){
             image.setTranslationY(-1000f);
             image.animate().translationYBy(1000f);
-            return xPlayer;
+            return player1;
         }
 
         else{
             image.setTranslationY(-1000f);
             image.animate().translationYBy(1000f);
-            return oPlayer;
+            return player2;
         }
     }
 
@@ -127,69 +167,114 @@ public class GameActivity extends AppCompatActivity {
                     combo3 = boxes[8];
                     break;
 
-                default:
-                    break;
             }
 
-            resultBuilder = new AlertDialog.Builder(GameActivity.this);
-            resultBuilder.setTitle("Game has concluded!");
-            resultBuilder.setCancelable(false);
-            resultBuilder.setPositiveButton("Play again", (DialogInterface.OnClickListener) (dialog, which) ->{
-                dialog.cancel();
-            });
-
-            resultBuilder.setNegativeButton("Home", (DialogInterface.OnClickListener) (dialog, which) ->{
-                Intent goHome = new Intent(this, MainActivity.class);
-                startActivity(goHome);
-            });
 
 
-
-            if(combo1 == oPlayer && combo2 == oPlayer && combo3 == oPlayer){
-                gameMessage.setText("O Player has won.");
-                resultBuilder.setMessage("O Player has won.");
-                resultGame = resultBuilder.create();
-                resultGame.show();
+            if(combo1 == player2 && combo2 == player2 && combo3 == player2){
+                gameMessage.setText(player2Name.concat(" has won!"));
+                playAgain.setVisibility(View.VISIBLE);
+                goHome.setVisibility(View.VISIBLE);
+                ClickImageFalse();
 
             }
 
-            else if(combo1 == xPlayer && combo2 == xPlayer && combo3 == xPlayer){
-                gameMessage.setText("X Player has won.");
-                resultBuilder.setMessage("X Player has won.");
-                resultGame = resultBuilder.create();
-                resultGame.show();
+            else if(combo1 == player1 && combo2 == player1 && combo3 == player1){
+                gameMessage.setText(player1Name.concat(" has won!"));
+                playAgain.setVisibility(View.VISIBLE);
+                goHome.setVisibility(View.VISIBLE);
+                ClickImageFalse();
+
             }
 
-            else if(moveCounter == 9){
-                gameMessage.setText("It's a tie.");
-                resultBuilder.setMessage("It's a tie");
-                resultGame = resultBuilder.create();
-                resultGame.show();
-            }
 
         }
 
     }
 
     public void ResetGame(){
+        moveCounter = 0;
 
+        image1.setImageDrawable(null);
+        image2.setImageDrawable(null);
+        image3.setImageDrawable(null);
+        image4.setImageDrawable(null);
+        image5.setImageDrawable(null);
+        image6.setImageDrawable(null);
+        image7.setImageDrawable(null);
+        image8.setImageDrawable(null);
+        image9.setImageDrawable(null);
+
+
+
+        Arrays.fill(boxes, null);
+    }
+
+    public void ClickImageFalse(){
+        image1.setClickable(false);
+        image2.setClickable(false);
+        image3.setClickable(false);
+        image4.setClickable(false);
+        image5.setClickable(false);
+        image6.setClickable(false);
+        image7.setClickable(false);
+        image8.setClickable(false);
+        image9.setClickable(false);
+    }
+
+    public void ClickImageTrue(){
+        image1.setClickable(true);
+        image2.setClickable(true);
+        image3.setClickable(true);
+        image4.setClickable(true);
+        image5.setClickable(true);
+        image6.setClickable(true);
+        image7.setClickable(true);
+        image8.setClickable(true);
+        image9.setClickable(true);
     }
 
     /*
         Assigns a player token to ImageView at every click
      */
-    public void playerTap1(View view){
+
+
+    public void PlayAgain(View view){
+        ResetGame();
+        playAgain.setVisibility(View.INVISIBLE);
+        goHome.setVisibility(View.INVISIBLE);
+        gameMessage.setText("");
+        ClickImageTrue();
+    }
+
+    public void GoHome(View view){
+        Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(goHome);
+        ResetGame();
+    }
+
+    public void playerTap(View view){
         ImageView imgPlayer = (ImageView) view;
 
         if(imgPlayer.getDrawable() == null){
             moveCounter++;
             int tappedBox = Integer.parseInt(imgPlayer.getTag().toString());
-            Log.i("tapped", imgPlayer.getTag().toString());
 
             boxes[tappedBox] = ShowPlayer(moveCounter, imgPlayer);
             imgPlayer.setImageDrawable(boxes[tappedBox]);
             WinLoseConditions();
+
+            // if neither player has won, the game is a tie
+            if(moveCounter == total_moves && gameMessage.getText().toString() == ""){
+                gameMessage.setText("It is a tie!");
+                playAgain.setVisibility(View.VISIBLE);
+                goHome.setVisibility(View.VISIBLE);
+                ClickImageFalse();
+            }
+
         }
     }
+
+
 
 }

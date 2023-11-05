@@ -19,8 +19,8 @@
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="412dp"
-        android:layout_height="396dp"
+        android:layout_width="407dp"
+        android:layout_height="400dp"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -39,7 +39,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="0" />
 
@@ -48,7 +48,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="3" />
 
@@ -57,7 +57,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="6" />
         </LinearLayout>
@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="1" />
 
@@ -82,7 +82,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="4" />
 
@@ -91,7 +91,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="7" />
         </LinearLayout>
@@ -107,7 +107,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="2" />
 
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="5" />
 
@@ -125,47 +125,48 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:onClick="playerTap1"
+                android:onClick="playerTap"
                 android:padding="20sp"
                 android:tag="8" />
         </LinearLayout>
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/txtGameMessage"
-        android:layout_width="229dp"
-        android:layout_height="38dp"
-        android:text="TextView"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.05" />
-
     <Button
         android:id="@+id/btnPlayAgain"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Play Again"
+        android:onClick="PlayAgain"
+        android:text="Play again"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
+        app:layout_constraintHorizontal_bias="0.225"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.134" />
+        app:layout_constraintVertical_bias="0.128" />
 
     <Button
         android:id="@+id/btnHome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:onClick="GoHome"
         android:text="Go Home"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.447"
+        app:layout_constraintHorizontal_bias="0.713"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.904" />
+        app:layout_constraintVertical_bias="0.128" />
+
+    <TextView
+        android:id="@+id/txtGameMessage"
+        android:layout_width="197dp"
+        android:layout_height="32dp"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.022" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

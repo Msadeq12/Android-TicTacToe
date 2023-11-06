@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/MintCream"
     tools:context=".GameActivity">
 
     <ImageView
@@ -162,6 +163,7 @@
         android:id="@+id/txtGameMessage"
         android:layout_width="197dp"
         android:layout_height="32dp"
+        android:textAlignment="center"
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

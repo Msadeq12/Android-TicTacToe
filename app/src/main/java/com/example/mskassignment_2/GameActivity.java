@@ -109,7 +109,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     /*
-        Conditions for winning, losing, and a tie
+        Conditions for winning and losing
      */
     public void WinLoseConditions(){
         Drawable combo1 = null;
@@ -192,6 +192,7 @@ public class GameActivity extends AppCompatActivity {
 
     }
 
+    // Sets everything to zero, null
     public void ResetGame(){
         moveCounter = 0;
 
@@ -210,6 +211,7 @@ public class GameActivity extends AppCompatActivity {
         Arrays.fill(boxes, null);
     }
 
+    // disables the click event for imageviews
     public void ClickImageFalse(){
         image1.setClickable(false);
         image2.setClickable(false);
@@ -222,6 +224,7 @@ public class GameActivity extends AppCompatActivity {
         image9.setClickable(false);
     }
 
+    // re-enables the click event for imageviews
     public void ClickImageTrue(){
         image1.setClickable(true);
         image2.setClickable(true);
@@ -234,11 +237,9 @@ public class GameActivity extends AppCompatActivity {
         image9.setClickable(true);
     }
 
-    /*
-        Assigns a player token to ImageView at every click
-     */
 
 
+    // Resets everything and hides the buttons for the player to play again
     public void PlayAgain(View view){
         ResetGame();
         playAgain.setVisibility(View.INVISIBLE);
@@ -247,12 +248,16 @@ public class GameActivity extends AppCompatActivity {
         ClickImageTrue();
     }
 
+    // The Home Button sends the player back to the Main Activity
     public void GoHome(View view){
         Intent goHome = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(goHome);
         ResetGame();
     }
 
+    /*
+        Assigns a player token to ImageView at every click
+     */
     public void playerTap(View view){
         ImageView imgPlayer = (ImageView) view;
 
